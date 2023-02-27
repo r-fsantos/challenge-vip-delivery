@@ -29,7 +29,7 @@ extension AddressSearchLoaderDecorator: RemoteLoaderProtocol {
                 guard let decorateeResponse = response as? T else { return }
                 completion(.success(decorateeResponse))
             default:
-                guard let decorateeResult = result as? Result<T, any Error> else { return }
+                guard let decorateeResult = result as? Result<T, Error> else { return }
                 completion(decorateeResult)
             }
         }

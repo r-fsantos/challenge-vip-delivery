@@ -43,7 +43,7 @@ private extension MenuItemInteractor {
     
     func fetchMenuItem() {
         network.request(DeliveryNetworkRequest.menuItem) { [weak self] (result: Result<MenuItemResponse, Error>) in
-            guard let self else { return }
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 self.presenter.presentResponse(.hasMenuItem(item: response))
