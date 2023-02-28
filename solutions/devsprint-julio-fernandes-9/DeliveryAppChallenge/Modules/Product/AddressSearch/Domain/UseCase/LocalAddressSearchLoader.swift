@@ -23,7 +23,7 @@ final class LocalAddressSearchLoader: LocalLoaderProtocol {
         self.items = addressList
     }
 
-    func filter<T: Codable>(by value: String, completion: @escaping LocalLoaderResponse<T>) {
+    func filter<T: Codable>(byValue value: String, completion: @escaping LocalLoaderResponse<T>) {
         let items: [Address] = items.filter { $0.contain(value: value) }
         guard let result = items as? T else { return }
         completion(result)

@@ -10,7 +10,7 @@ import Foundation
 protocol LocalLoaderProtocol: AnyObject {
     typealias LocalLoaderResponse<T: Codable> = ((T) -> Void)
     func insert<T: Codable>(items: [T])
-    func filter<T: Codable>(by value: String,
+    func filter<T: Codable>(byValue value: String,
                             completion: @escaping LocalLoaderResponse<T>)
 }
 

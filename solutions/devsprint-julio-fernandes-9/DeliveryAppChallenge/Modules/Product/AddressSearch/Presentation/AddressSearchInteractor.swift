@@ -31,7 +31,7 @@ final class AddressSearchInteractor: AddressSearchBusinessLogicProtocol {
         switch request {
         case .fetchDataView:
             self.fetchDataViewFromRemoteLoader()
-        case let .filterBy(value):
+        case let .filter(value):
             self.fetchDataViewFromLocalLoader(by: value)
         }
     }
@@ -58,7 +58,7 @@ private extension AddressSearchInteractor {
 private extension AddressSearchInteractor {
 
     private func fetchDataViewFromLocalLoader(by value: String) {
-        localLoader.filter(by: value) { [weak self] (result: [Address]) in
+        localLoader.filter(byValue: value) { [weak self] (result: [Address]) in
             guard let self = self else { return }
             self.handleAndPresentResult(.success(result))
         }
